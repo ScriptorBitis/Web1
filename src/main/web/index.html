@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабка_-_1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<audio autoplay loop>
+    <source src="TheManwhosoldtheWorldNivana.mp3" type="audio/mpeg">
+</audio>
+<table>
+    <tr>
+        <header>
+            Лабораторная №1 Чайковского Никиты Михайловича
+            <p>Вар : 467969</p>
+        </header>
+    </tr>
+
+    <tr>
+        <td> Изменение X:
+            <input type="text" required placeholder="Например, (-3...3)">
+        </td>
+        <td>Изменение Y: <label for="Y">
+            <select id="Y">
+                <option value="-2">-2
+                </option>
+                <option value="-1,5">-1,5
+                </option>
+                <option value="-1">-1
+                </option>
+                <option value="-0.5">-0.5
+                </option>
+                <option value="0">0
+                </option>
+                <option value="0.5">0.5
+                </option>
+                <option value="1">1
+                </option>
+                <option value="1.5">1.5
+                </option>
+                <option value="2">2
+                </option>
+            </select>
+        </label>
+        </td>
+        <td>Изменение R:
+            <form name="Rform">
+                <label>
+                    <input
+                            type="radio"
+                            name="radioR"
+                            value="1"
+                    >
+                    1
+                </label>
+                <label>
+                    <input
+                            type="radio"
+                            name="radioR"
+                            value="2"
+                    >
+                    2
+                </label>
+                <label>
+                    <input
+                            type="radio"
+                            name="radioR"
+                            value="3"
+                    >
+                    3
+                </label>
+                <label>
+                    <input
+                            type="radio"
+                            name="radioR"
+                            value="4"
+                    >
+                    4
+                </label>
+                <label>
+                    <input
+                            type="radio"
+                            name="radioR"
+                            value="5"
+                    >
+                    5
+                </label>
+            </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="3">
+            <input type="submit" value="Показать точку">
+        </td>
+    </tr>
+
+    <tfoot>
+    <tr>
+        <td colspan="3">
+            <canvas id="graphic" width="405" height="405"></canvas>
+            <script src="script.js"></script>
+
+        </td>
+
+    </tr>
+    </tfoot>
+
+
+</table>
+</body>
+</html>
