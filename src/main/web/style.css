@@ -2,7 +2,7 @@ body {
             margin: 0;
             padding: 0;
 
-background: url("MEME.gif") no-repeat center center fixed;
+background: url("") no-repeat center center fixed;
 background-size: cover;
 }
 
@@ -13,5 +13,13 @@ padding: 0;
 
 background: rgba(255, 255, 255, 0.75);;
 
+
+}
+
+.head {
+
+    font-family: sans-serif;
+    color: blue;
+    font-size: 115%;
 
 }

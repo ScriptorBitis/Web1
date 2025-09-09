@@ -1,5 +1,8 @@
 const canvas = document.getElementById("graphic");
 const ctx = canvas.getContext("2d");
+
+console.log("Поехали")
+
 function drawEvr() {
     ctx.font = "bold 16px Arial";
 
@@ -90,9 +93,22 @@ function onclick(e){
     ctx.fillStyle = "red";
     ctx.fill()
     //четверть круга  в 1 четверти
+    ctx.moveTo(200, 200);
 
+
+    ctx.arc(200,200,r*40, -Math.PI/2, 0)
+    ctx.moveTo(200, 200);
+    ctx.moveTo(200, 200+40*r)
+    ctx.fill()
 
     //прямоугольник 0.5 К 1 В 4  четверти
+
+    ctx.lineTo(200, 200);
+    ctx.lineTo(200+r*40, 200);
+    ctx.lineTo(200+r*40, 200+r*20);
+    ctx.lineTo(200,200+20*r)
+    ctx.fill()
+
 
     ctx.closePath();
     ctx.strokeStyle = "red";
@@ -101,7 +117,41 @@ function onclick(e){
 
 
     drawEvr();
-
-    return;
 }
 
+
+document.getElementById("Xinput").addEventListener("input", checkX);
+
+function  checkX(e) {
+    console.log("Началась проверка вот этого - >" + e.target.value);
+
+
+    //пережиток прошлого
+    e.target.value = e.target.value.replace(/[^0-9.-]/g, "");
+    e.target.in
+
+    const input = e.target;
+    const selectionStart = input.selectionStart;
+    let value = input.value;
+
+    if (value === "" || value === "-" || value === "." || value === "-.") {
+        return;
+    }
+
+    if (isNaN(Number(value))) {
+        input.value = value.slice(0, selectionStart - 1) + value.slice(selectionStart);
+        input.setSelectionRange(selectionStart - 1, selectionStart - 1);
+
+    }
+    if (Number(value) > 3 ) {
+        input.value = value.slice(0, selectionStart - 1) + value.slice(selectionStart);
+        input.setSelectionRange(selectionStart - 1, selectionStart - 1);
+    }
+    if (Number(value) < - 3) {
+        input.value = value.slice(0, selectionStart - 1) + value.slice(selectionStart);
+        input.setSelectionRange(selectionStart - 1, selectionStart - 1);
+
+    }
+}
+
+drawEvr()
