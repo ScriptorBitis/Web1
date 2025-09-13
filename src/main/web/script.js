@@ -90,7 +90,7 @@ function onclick(e){
     ctx.lineTo(200,200)
     ctx.lineTo(200-20*r, 200)
 
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "#7bc8f6";
     ctx.fill()
     //четверть круга  в 1 четверти
     ctx.moveTo(200, 200);
@@ -111,7 +111,7 @@ function onclick(e){
 
 
     ctx.closePath();
-    ctx.strokeStyle = "red";
+    ctx.strokeStyle = "#7bc8f6";
     ctx.lineWidth = 2;
     ctx.stroke();
 
@@ -128,7 +128,7 @@ function  checkX(e) {
 
     //пережиток прошлого
     e.target.value = e.target.value.replace(/[^0-9.-]/g, "");
-    e.target.in
+
 
     const input = e.target;
     const selectionStart = input.selectionStart;

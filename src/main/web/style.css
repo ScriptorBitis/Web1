@@ -1,19 +1,20 @@
 body {
-            margin: 0;
-            padding: 0;
-
-background: url("") no-repeat center center fixed;
-background-size: cover;
+    margin: 0;
+    padding: 0;
+    background-image: url("textures/Hd_tpmag.webp");
+    background-size: cover;
 }
 
+* {
+    cursor: url("textures/Cursor_Normal.webp") 0 0, auto;
 
+}
 canvas {
-margin: 0;
-padding: 0;
+    margin: 0;
+    padding: 0;
+    background: url("textures/Diboxbck.webp") 0 0;
 
-background: rgba(255, 255, 255, 0.75);;
-
-
+    /*background: rgba(255, 255, 255, 0.75);*/
 }
 
 .head {
@@ -21,5 +22,100 @@ background: rgba(255, 255, 255, 0.75);;
     font-family: sans-serif;
     color: blue;
     font-size: 115%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    background:
+            url("textures/Gldbtn.webp") ;
+    background-size:  contain;
+    text-align: center;
+
+
+}
+
+.head > p {
+    background: linear-gradient(183deg, #6000CA 10%, #CA00CD 70%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Impact';
+    transform: skewY(-8deg) scaleY(1.3) scaleX(0.8);
+
+}
+
+.showButton:hover {
+    background: url("textures/flame.gif") no-repeat center center fixed;
+}
+
+.center-table {
+    margin: auto;
+}
+
+td {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffd700;
+    text-shadow:
+            1px 1px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000;
+    font-size: 180%;
+}
+
+/*НЕЙРОНОЧНЫЙ КОД*/
+
+/* Общий стиль для всех input и select */
+td input[type="text"], td select {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 120%;
+    color: #ffd700; /* золотой текст */
+    background: #3b2f2f; /* тёмный фон, как в меню Heroes 3 */
+    border: 2px solid #bfa136; /* золотая рамка */
+    border-radius: 4px;
+    padding: 5px 10px;
+    text-align: center;
+    box-shadow: inset 0 0 5px #00000088, 0 2px 0 #000; /* лёгкая тень */
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+td input[type="text"]:focus,
+td select:focus {
+    border-color: #ffd700;
+    box-shadow: 0 0 8px #ffd700aa;
+    background: #443833;
+}
+
+/* Кнопка "Показать точку" */
+.showButton {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 140%;
+    color: #ffd700;
+    background-color: #3b2f2f;
+    border: 2px solid #bfa136;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: url("textures/Cursor_Normal.webp") 0 0, auto;
+    box-shadow: 0 4px 0 #000, inset 0 0 5px #00000088;
+    transition: all 0.15s ease-in-out;
+    text-shadow:
+            1px 1px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000;
+}
+
+/* Эффект при наведении */
+.showButton:hover {
+    background: url("textures/flame.gif") center center, #3b2f2f;
+    background-size: contain;
+    box-shadow: 0 6px 0 #000, inset 0 0 8px #ffd70088;
+    transform: translateY(-2px);
+}
+
+/* Эффект при нажатии */
+.showButton:active {
+    box-shadow: 0 2px 0 #000, inset 0 0 5px #00000088;
+    transform: translateY(2px);
 }
