@@ -72,23 +72,25 @@ function drawEvr() {
     ctx.lineWidth = 2;
     ctx.stroke();
 }
+
 const myForm = document.forms['Rform'];
 for (let i = 0; i < myForm.radioR.length; i++) {
     myForm.radioR[i].addEventListener('click', onclick);
 }
-
-function onclick(e){
+let globalR;
+function onclick(e) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     let r = e.target.value;
+    globalR = r;
     ctx.beginPath()
 
     //треугольник  в 2 четверти
-    ctx.moveTo(200-20*r, 200);
+    ctx.moveTo(200 - 20 * r, 200);
 
-    ctx.lineTo(200,200 - r*20 );
-    ctx.lineTo(200,200)
-    ctx.lineTo(200-20*r, 200)
+    ctx.lineTo(200, 200 - r * 20);
+    ctx.lineTo(200, 200)
+    ctx.lineTo(200 - 20 * r, 200)
 
     ctx.fillStyle = "#7bc8f6";
     ctx.fill()
@@ -96,17 +98,17 @@ function onclick(e){
     ctx.moveTo(200, 200);
 
 
-    ctx.arc(200,200,r*40, -Math.PI/2, 0)
+    ctx.arc(200, 200, r * 40, -Math.PI / 2, 0)
     ctx.moveTo(200, 200);
-    ctx.moveTo(200, 200+40*r)
+    ctx.moveTo(200, 200 + 40 * r)
     ctx.fill()
 
     //прямоугольник 0.5 К 1 В 4  четверти
 
     ctx.lineTo(200, 200);
-    ctx.lineTo(200+r*40, 200);
-    ctx.lineTo(200+r*40, 200+r*20);
-    ctx.lineTo(200,200+20*r)
+    ctx.lineTo(200 + r * 40, 200);
+    ctx.lineTo(200 + r * 40, 200 + r * 20);
+    ctx.lineTo(200, 200 + 20 * r)
     ctx.fill()
 
 
@@ -119,10 +121,10 @@ function onclick(e){
     drawEvr();
 }
 
-
+drawEvr()
 document.getElementById("Xinput").addEventListener("input", checkX);
 
-function  checkX(e) {
+function checkX(e) {
     console.log("Началась проверка вот этого - >" + e.target.value);
 
 
@@ -143,15 +145,70 @@ function  checkX(e) {
         input.setSelectionRange(selectionStart - 1, selectionStart - 1);
 
     }
-    if (Number(value) > 3 ) {
+    if (Number(value) > 3) {
         input.value = value.slice(0, selectionStart - 1) + value.slice(selectionStart);
         input.setSelectionRange(selectionStart - 1, selectionStart - 1);
     }
-    if (Number(value) < - 3) {
+    if (Number(value) < -3) {
         input.value = value.slice(0, selectionStart - 1) + value.slice(selectionStart);
         input.setSelectionRange(selectionStart - 1, selectionStart - 1);
 
     }
 }
 
-drawEvr()
+const music = new Audio('HOM.mp3');
+music.volume = 0.1;
+music.loop = true;
+
+function playMusic() {
+    if (music.paused) {
+
+        music.play();
+    } else {
+        music.pause();
+    }
+}
+
+
+function checkChoise() {
+    let r = globalR;
+    let x = document.getElementById("xi").value;
+    let y = document.getElementById("Y").value;
+    console.log("X:", x, "Y:", y, "R:", r);
+
+    if (!x) {
+        alert("Поле X не заполнено!");
+        return false;
+    }
+    if (!y) {
+        alert("Поле Y не выбрано!");
+        return false;
+    }
+    if (!r) {
+        alert("R не выбран!");
+        return false;
+    }
+    console.log("Все поля заполнены!");
+    return true;
+}
+
+function makeForm() {
+    if (!checkChoise()) {
+        return
+    }
+    let r = globalR;
+    let x = document.getElementById("xi").value;
+    let y = document.getElementById("Y").value;
+
+    const formData = new FormData();
+    formData.append('x', x);
+    formData.append('y', y);
+    formData.append('r', r);
+
+    fetch('http://localhost:8080', {
+        method: 'POST',
+        body: formData
+    }).then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Fetch error:', error));
+}

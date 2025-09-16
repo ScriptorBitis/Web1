@@ -7,9 +7,7 @@
 </head>
 
 <body>
-<audio autoplay loop>
-    <source src="HOM.mp3" type="audio/mpeg">
-</audio>
+
 <header class="head">
     Лабораторная №1 Чайковского Никиты Михайловича
     <p>Вар : 467969 </p>
@@ -17,44 +15,49 @@
 </header>
 <table class="center-table">
 
-    <tr >
-        <td> Изменение X:
+    <form name="Rform" action="http://localhost:8080" method="post" target="_self">
+        <tr>
 
-            <label for="Xinput"></label>
-                <input maxlength="10" pattern="-?[0-9]*\.?[0-9]*" id="Xinput" type="text" required placeholder="Число в промежутке, (-3...3)">
+            <td>
 
-        </td>
-        <td>Изменение Y: <p><label for="Y">
-            <select id="Y">
-                <option value="-2">-2
-                </option>
-                <option value="-1,5">-1,5
-                </option>
-                <option value="-1">-1
-                </option>
-                <option value="-0.5">-0.5
-                </option>
-                <option value="0">0
-                </option>
-                <option value="0.5">0.5
-                </option>
-                <option value="1">1
-                </option>
-                <option value="1.5">1.5
-                </option>
-                <option value="2">2
-                </option>
-            </select>
-        </label>
-        </p>
-        </td>
-        <td>Изменение R:
-            <form name="Rform">
+                <label for="Xinput">Изменение X:</label>
+                <input id = "xi" name="x" maxlength="10" pattern="-?[0-9]*\.?[0-9]*" id="Xinput" type="text" required
+                       placeholder="Число в промежутке, (-3...3)">
+
+            </td>
+            <td>Изменение Y:
+                <p><label for="Y">
+                    <select id="Y" name="y">
+                        <option value="-2">-2
+                        </option>
+                        <option value="-1,5">-1,5
+                        </option>
+                        <option value="-1">-1
+                        </option>
+                        <option value="-0.5">-0.5
+                        </option>
+                        <option value="0">0
+                        </option>
+                        <option value="0.5">0.5
+                        </option>
+                        <option value="1">1
+                        </option>
+                        <option value="1.5">1.5
+                        </option>
+                        <option value="2">2
+                        </option>
+                    </select>
+                </label>
+                </p>
+            </td>
+            <td>Изменение R:
+
                 <label>
                     <input
                             type="radio"
                             name="radioR"
                             value="1"
+                            required
                     >
                     1
                 </label>
@@ -90,17 +93,17 @@
                     >
                     5
                 </label>
-            </form>
-        </td>
-    </tr>
+            </td>
+        </tr>
 
-    <tr>
-        <td colspan="3">
-            <input class="showButton" type="submit" value="Показать точку">
-        </td>
-    </tr>
 
-    <tfoot>
+        <tr>
+            <td colspan="3">
+              <input id="swBut" class="showButton" type="button" value="Показать точку" name="submitButton" onclick="makeForm()">
+            </td>
+        </tr>
+    </form>
+
     <tr>
         <td colspan="3">
             <canvas id="graphic" width="405" height="405"></canvas>
@@ -109,6 +112,27 @@
         </td>
 
     </tr>
+    <tr>
+        <td colspan="3">
+            <input type="button" class="showButton" value="Звук" onclick="playMusic()"/>
+        </td>
+    </tr>
+    <tfoot>
+    <td colspan="3">
+        <table>
+            <thead>
+            <tr>
+                <th>X</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>Попадание??????</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+
+        </table>
+    </td>
     </tfoot>
 
 
