@@ -122,7 +122,7 @@ function onclick(e) {
 }
 
 drawEvr()
-document.getElementById("Xinput").addEventListener("input", checkX);
+document.getElementById("xi").addEventListener("input", checkX);
 
 function checkX(e) {
     console.log("Началась проверка вот этого - >" + e.target.value);
@@ -156,17 +156,12 @@ function checkX(e) {
     }
 }
 
-const music = new Audio('HOM.mp3');
+const music = new Audio('./audio/HOM.mp3');
 music.volume = 0.1;
 music.loop = true;
 
 function playMusic() {
-    if (music.paused) {
-
-        music.play();
-    } else {
-        music.pause();
-    }
+    music.paused ? music.play() : music.pause();
 }
 
 
@@ -212,3 +207,4 @@ function makeForm() {
         .then(data => console.log(data))
         .catch(error => console.error('Fetch error:', error));
 }
+

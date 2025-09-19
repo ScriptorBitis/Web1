@@ -17,15 +17,15 @@
 
     <form name="Rform" action="http://localhost:8080" method="post" target="_self">
         <tr>
-
-            <td>
-
-                <label for="Xinput">Изменение X:</label>
-                <input id = "xi" name="x" maxlength="10" pattern="-?[0-9]*\.?[0-9]*" id="Xinput" type="text" required
-                       placeholder="Число в промежутке, (-3...3)">
+            <td class="input-td">
+                <div class="IzmX">Изменение X:</div>
+                <label for="xi"></label>
+                <input class="labelx" id="xi" name="x" maxlength="10" pattern="-?[0-9]*\.?[0-9]*" type="text" required
+                       placeholder="[-3...3]">
 
             </td>
-            <td>Изменение Y:
+            <td class="input-td">
+                <div class="IzmY">Изменение Y:</div>
                 <p><label for="Y">
                     <select id="Y" name="y">
                         <option value="-2">-2
@@ -50,56 +50,58 @@
                 </label>
                 </p>
             </td>
-            <td>Изменение R:
-
-                <label>
-                    <input
-                            type="radio"
-                            name="radioR"
-                            value="1"
-                            required
-                    >
-                    1
-                </label>
-                <label>
-                    <input
-                            type="radio"
-                            name="radioR"
-                            value="2"
-                    >
-                    2
-                </label>
-                <label>
-                    <input
-                            type="radio"
-                            name="radioR"
-                            value="3"
-                    >
-                    3
-                </label>
-                <label>
-                    <input
-                            type="radio"
-                            name="radioR"
-                            value="4"
-                    >
-                    4
-                </label>
-                <label>
-                    <input
-                            type="radio"
-                            name="radioR"
-                            value="5"
-                    >
-                    5
-                </label>
+            <td class="input-td">Изменение R:
+                <div class="radio-group">
+                    <label>
+                        <input
+                                type="radio"
+                                name="radioR"
+                                value="1"
+                                required
+                        >
+                        1
+                    </label>
+                    <label>
+                        <input
+                                type="radio"
+                                name="radioR"
+                                value="2"
+                        >
+                        2
+                    </label>
+                    <label>
+                        <input
+                                type="radio"
+                                name="radioR"
+                                value="3"
+                        >
+                        3
+                    </label>
+                    <label>
+                        <input
+                                type="radio"
+                                name="radioR"
+                                value="4"
+                        >
+                        4
+                    </label>
+                    <label>
+                        <input
+                                type="radio"
+                                name="radioR"
+                                value="5"
+                        >
+                        5
+                    </label>
+                </div>
             </td>
         </tr>
 
 
         <tr>
             <td colspan="3">
-              <input id="swBut" class="showButton" type="button" value="Показать точку" name="submitButton" onclick="makeForm()">
+                <input id="swBut" class="showButton" type="button" value="Показать точку" name="submitButton"
+                       onclick="makeForm()">
             </td>
         </tr>
     </form>
@@ -107,7 +109,7 @@
     <tr>
         <td colspan="3">
             <canvas id="graphic" width="405" height="405"></canvas>
-            <script src="script.js"></script>
+
 
         </td>
 
@@ -137,5 +139,6 @@
 
 
 </table>
+<script src="script.js"></script>
 </body>
 </html>

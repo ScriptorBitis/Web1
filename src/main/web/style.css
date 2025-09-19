@@ -44,9 +44,23 @@ canvas {
 
 }
 
-.showButton:hover {
-    background: url("textures/flame.gif") no-repeat center center fixed;
+.IzmY {
+    position: relative;
+    height: 3px;
 }
+
+.IzmX {
+    position: relative;
+    height: 60px;
+}
+
+.labelx {
+    position: relative;
+    top: -32px;
+    height: 45px;
+
+}
+
 
 .center-table {
     margin: auto;
@@ -63,6 +77,23 @@ td {
     font-size: 180%;
 }
 
+.input-td {
+    text-align: center;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8%;
+}
+
+.input-td label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 110%;
+
+}
 /*НЕЙРОНОЧНЫЙ КОД*/
 
 /* Общий стиль для всех input и select */
