@@ -195,13 +195,16 @@ function makeForm() {
     let x = document.getElementById("xi").value;
     let y = document.getElementById("Y").value;
 
-    const formData = new FormData();
+    const formData = new URLSearchParams();
     formData.append('x', x);
     formData.append('y', y);
     formData.append('r', r);
 
     fetch('http://localhost:8080', {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
         body: formData
     }).then(response => response.json())
         .then(data => console.log(data))
