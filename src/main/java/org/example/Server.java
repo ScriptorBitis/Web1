@@ -6,6 +6,7 @@ import com.fastcgi.*;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 public class Server {
@@ -13,14 +14,18 @@ public class Server {
     private final Logger logger;
 
     public Server() {
+        Locale.setDefault(Locale.US);
         this.logger = ServerLogger.getInstance();
     }
 
     public void run() throws IOException {
         var fcgiInterface = new FCGIInterface();
+        logger.info("Сервер стартует");
         while (fcgiInterface.FCGIaccept() >= 0) {
+
             long start = System.nanoTime();
             var method = fcgiInterface.request.params.getProperty("REQUEST_METHOD");
+            logger.info("Сейчас начнем что-то обрабатывать с методом "+ (String) method);
             if (!method.equals("POST")) {
                 System.out.println(errorResult("Invalid request method"));
             } else {
@@ -44,6 +49,8 @@ public class Server {
                             Integer.parseInt((String) rSrt),
                             true,
                             System.nanoTime()- start)));
+                    logger.info("У нас победитель!");
+
 
                 } else {
                     System.out.println(hitResult(makeJsonResponse(Float.parseFloat((String) xStr),
@@ -51,7 +58,7 @@ public class Server {
                             Integer.parseInt((String) rSrt),
                             false,
                             System.nanoTime()- start)));
-
+                    logger.info("Не попал мужик, мда))))");
                 }
 
 

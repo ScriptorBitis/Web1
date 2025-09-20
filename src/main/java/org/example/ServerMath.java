@@ -11,7 +11,7 @@ public class ServerMath {
         }
         try {
             float checkVar = Float.parseFloat(x);
-            checkVar = Integer.parseInt(y);
+            checkVar = Float.parseFloat(y);
             checkVar = Integer.parseInt(r);
         } catch (NumberFormatException e) {
             return false;
@@ -20,7 +20,7 @@ public class ServerMath {
         if (xInt < -3 || xInt > 3) {
             return false;
         }
-        int yInt = Integer.parseInt(y);
+        float yInt = Float.parseFloat(y);
         if (yInt < -2 || yInt > 2) {
             return false;
         }

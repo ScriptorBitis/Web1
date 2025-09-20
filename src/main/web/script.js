@@ -200,14 +200,35 @@ function makeForm() {
     formData.append('y', y);
     formData.append('r', r);
 
-    fetch('http://localhost:8080', {
+    fetch('http://localhost:8080/fcgi-bin/web1.jar', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: formData
-    }).then(response => response.json())
+    }).then(async response => response.json())
         .then(data => console.log(data))
+        .then(data => addDataTable(data))
         .catch(error => console.error('Fetch error:', error));
+}
+
+function addDataTable(jsonData) {
+    var x = jsonData.x;
+    var y = jsonData.y;
+    var r = jsonData.r;
+    var time = jsonData.execution_time;
+    var hitBol = jsonData.result;
+    const table = document.getElementById("hit-table");
+    const newRow = table.insertRow();
+    const xCell = newRow.insertCell(0);
+    const yCell = newRow.insertCell(1);
+    const rCell = newRow.insertCell(2);
+    const timeCell = newRow.insertCell(3);
+    const hitCell = newRow.insertCell(4);
+    xCell.innerHTML = x;
+    yCell.innerHTML = y;
+    rCell.innerHTML = r;
+    timeCell.innerHTML = time;
+    hitCell.innerHTML = hitBol;
 }
 
