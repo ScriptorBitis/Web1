@@ -10,9 +10,9 @@ public class ServerMath {
             return false;
         }
         try {
-            float checkVar = Float.parseFloat(x);
-            checkVar = Float.parseFloat(y);
-            checkVar = Integer.parseInt(r);
+            float checkVarX = Float.parseFloat(x);
+            float checkVarY = Float.parseFloat(y);
+            int checkVarR = Integer.parseInt(r);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -34,27 +34,27 @@ public class ServerMath {
 
     public boolean checkHit(String x, String y, String r) {
         float xFlt = Float.parseFloat(x);
-        int yInt = Integer.parseInt(y);
+        float yFlt = Float.parseFloat(y);
         int rInt = Integer.parseInt(r);
 
 
-        float distance = (float) Math.sqrt(xFlt * xFlt + yInt * yInt);
+        float distance = (float) Math.sqrt(xFlt * xFlt + yFlt * yFlt);
 
         //Прям в 4 четверти
-        if (xFlt > 0 & yInt < 0) {
+        if (xFlt >= 0 & yFlt <= 0) {
             return (xFlt <= rInt) &
-                    (yInt <= rInt/2f);
+                    (Math.abs(yFlt) <= rInt/2f);
         }
 
         // четверть круга в 1 четверти
-        if (xFlt > 0 & yInt > 0) {
+        if (xFlt >= 0 & yFlt >= 0) {
             return distance <= rInt;
         }
         //треуг в 2 четверти
-        if (xFlt < 0 & yInt > 0) {
-            return (yInt<= rInt/2f + xFlt) &
+        if (xFlt <= 0 & yFlt >= 0) {
+            return (yFlt <= rInt/2f + xFlt) &
                     (Math.abs(xFlt) <= rInt/2f) &
-                    (Math.abs(yInt) <= rInt/2f);
+                    (Math.abs(yFlt) <= rInt/2f);
         }
 
 

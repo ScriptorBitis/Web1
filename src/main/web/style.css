@@ -94,9 +94,17 @@ td {
     font-size: 110%;
 
 }
-/*НЕЙРОНОЧНЫЙ КОД*/
 
-/* Общий стиль для всех input и select */
+.hit-table{
+    overflow-y:scroll;
+    height:200px;
+    text-align: center;
+    vertical-align: middle;
+    display:block;
+}
+
+
+
 td input[type="text"], td select {
     font-family: 'Courier New', Courier, monospace;
     font-size: 120%;
@@ -118,7 +126,7 @@ td select:focus {
     background: #443833;
 }
 
-/* Кнопка "Показать точку" */
+
 .showButton {
     font-family: 'Courier New', Courier, monospace;
     font-size: 140%;
@@ -137,7 +145,7 @@ td select:focus {
             -1px 1px 0 #000;
 }
 
-/* Эффект при наведении */
+
 .showButton:hover {
     background: url("textures/flame.gif") center center, #3b2f2f;
     background-size: contain;

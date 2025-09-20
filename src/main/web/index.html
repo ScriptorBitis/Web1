@@ -11,135 +11,85 @@
 <header class="head">
     Лабораторная №1 Чайковского Никиты Михайловича
     <p>Вар : 467969 </p>
-
 </header>
-<table class="center-table">
 
-    <form name="Rform" action="http://localhost:8080" method="post" target="_self">
+
+<form name="Rform" method="post" target="_self">
+    <table class="center-table">
+
         <tr>
             <td class="input-td">
                 <div class="IzmX">Изменение X:</div>
                 <label for="xi"></label>
                 <input class="labelx" id="xi" name="x" maxlength="10" pattern="-?[0-9]*\.?[0-9]*" type="text" required
                        placeholder="[-3...3]">
-
             </td>
             <td class="input-td">
                 <div class="IzmY">Изменение Y:</div>
                 <p><label for="Y">
                     <select id="Y" name="y">
-                        <option value="-2">-2
-                        </option>
-                        <option value="-1,5">-1,5
-                        </option>
-                        <option value="-1">-1
-                        </option>
-                        <option value="-0.5">-0.5
-                        </option>
-                        <option value="0">0
-                        </option>
-                        <option value="0.5">0.5
-                        </option>
-                        <option value="1">1
-                        </option>
-                        <option value="1.5">1.5
-                        </option>
-                        <option value="2">2
-                        </option>
+                        <option value="-2">-2</option>
+                        <option value="-1.5">-1.5</option>
+                        <option value="-1">-1</option>
+                        <option value="-0.5">-0.5</option>
+                        <option value="0">0</option>
+                        <option value="0.5">0.5</option>
+                        <option value="1">1</option>
+                        <option value="1.5">1.5</option>
+                        <option value="2">2</option>
                     </select>
-                </label>
-                </p>
+                </label></p>
             </td>
             <td class="input-td">Изменение R:
                 <div class="radio-group">
-                    <label>
-                        <input
-                                type="radio"
-                                name="radioR"
-                                value="1"
-                                required
-                        >
-                        1
-                    </label>
-                    <label>
-                        <input
-                                type="radio"
-                                name="radioR"
-                                value="2"
-                        >
-                        2
-                    </label>
-                    <label>
-                        <input
-                                type="radio"
-                                name="radioR"
-                                value="3"
-                        >
-                        3
-                    </label>
-                    <label>
-                        <input
-                                type="radio"
-                                name="radioR"
-                                value="4"
-                        >
-                        4
-                    </label>
-                    <label>
-                        <input
-                                type="radio"
-                                name="radioR"
-                                value="5"
-                        >
-                        5
-                    </label>
+                    <label><input type="radio" name="radioR" value="1" required> 1</label>
+                    <label><input type="radio" name="radioR" value="2"> 2</label>
+                    <label><input type="radio" name="radioR" value="3"> 3</label>
+                    <label><input type="radio" name="radioR" value="4"> 4</label>
+                    <label><input type="radio" name="radioR" value="5"> 5</label>
                 </div>
             </td>
         </tr>
-
-
         <tr>
             <td colspan="3">
                 <input id="swBut" class="showButton" type="button" value="Показать точку" name="submitButton"
                        onclick="makeForm()">
             </td>
         </tr>
-    </form>
 
-    <tr>
-        <td colspan="3">
-            <canvas id="graphic" width="405" height="405"></canvas>
+        <tr>
+            <td colspan="3">
+                <canvas id="graphic" width="405" height="405"></canvas>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <input type="button" class="showButton" value="Звук" onclick="playMusic()"/>
+            </td>
+        </tr>
 
+        <tfoot>
+        <tr>
+            <td colspan="3">
+                <table class="hit-table">
+                    <thead>
+                    <tr>
+                        <th> X </th>
+                        <th> Y </th>
+                        <th> R </th>
+                        <th> Время выполнения (мс) </th>
+                        <th>Попадание??????</th>
+                    </tr>
+                    </thead>
+                    <tbody id="hit-table">
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</form>
 
-        </td>
-
-    </tr>
-    <tr>
-        <td colspan="3">
-            <input type="button" class="showButton" value="Звук" onclick="playMusic()"/>
-        </td>
-    </tr>
-    <tfoot>
-    <td colspan="3">
-        <table id="hit-table">
-            <thead>
-            <tr>
-                <th>X</th>
-                <th>Y</th>
-                <th>R</th>
-                <th>Время выполнения в наносекундах</th>
-                <th>Попадание??????</th>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
-
-        </table>
-    </td>
-    </tfoot>
-
-
-</table>
 <script src="script.js"></script>
 </body>
 </html>

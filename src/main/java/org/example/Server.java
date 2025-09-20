@@ -45,7 +45,7 @@ public class Server {
                 }
                 if (serverMath.checkHit((String) xStr, (String) yStr, (String) rSrt)) {
                     System.out.println(hitResult(makeJsonResponse(Float.parseFloat((String) xStr),
-                            Integer.parseInt((String) yStr),
+                            Float.parseFloat((String) yStr),
                             Integer.parseInt((String) rSrt),
                             true,
                             System.nanoTime()- start)));
@@ -54,7 +54,7 @@ public class Server {
 
                 } else {
                     System.out.println(hitResult(makeJsonResponse(Float.parseFloat((String) xStr),
-                            Integer.parseInt((String) yStr),
+                            Float.parseFloat((String) yStr),
                             Integer.parseInt((String) rSrt),
                             false,
                             System.nanoTime()- start)));
@@ -89,17 +89,18 @@ public class Server {
                 """.formatted(hit.getBytes(StandardCharsets.UTF_8).length, hit);
     }
 
-    private static String makeJsonResponse(float x, int y, int r, boolean tFHit, long time) {
+    private static String makeJsonResponse(float x, float y, int r, boolean tFHit, long time) {
+        double ms = time / 1_000_000d;
         String json = """
                          {
                          "x": %.2f,
-                         "y": %d,
+                         "y": %.1f,
                          "r": %d,
-                         "execution_time": "%d",
+                         "execution_time": "%.5f",
                          "result": "%s"
                          }
                 """;
-        return json.formatted(x, y, r, time, tFHit ? "true" : "false");
+        return json.formatted(x, y, r, ms, tFHit ? "true" : "false");
     }
 
     private static String readRequestBody() throws IOException {

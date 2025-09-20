@@ -78,6 +78,27 @@ for (let i = 0; i < myForm.radioR.length; i++) {
     myForm.radioR[i].addEventListener('click', onclick);
 }
 let globalR;
+
+let pointsX = [];
+let pointsY = [];
+
+function makePoint(x, y) {
+    const centerX = 200;
+    const centerY = 200;
+    const scale = 40;
+
+    const pixelX = centerX + x * scale;
+    const pixelY = centerY - y * scale;
+
+
+    ctx.beginPath();
+    ctx.arc(pixelX, pixelY, 4, 0, 2 * Math.PI);
+    ctx.fillStyle = "red";
+    ctx.fill();
+    return;
+}
+
+
 function onclick(e) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -119,7 +140,12 @@ function onclick(e) {
 
 
     drawEvr();
+
+    for (index = 0; index < pointsX.length; ++index) {
+        makePoint(pointsX[index], pointsY[index]);
+    }
 }
+
 
 drawEvr()
 document.getElementById("xi").addEventListener("input", checkX);
@@ -199,7 +225,9 @@ function makeForm() {
     formData.append('x', x);
     formData.append('y', y);
     formData.append('r', r);
-
+    makePoint(parseFloat(x), parseFloat(y));
+    pointsX.push(x);
+    pointsY.push(y);
     fetch('http://localhost:8080/fcgi-bin/web1.jar', {
         method: 'POST',
         headers: {
@@ -207,12 +235,16 @@ function makeForm() {
         },
         body: formData
     }).then(async response => response.json())
-        .then(data => addDataTable(data))
+        .then(data => {
+            addDataTable(data)
+            return data
+        })
+        .then(data => console.log("Пришел ответик!\n" + data))
         .catch(error => console.error('Fetch error:', error));
 }
 
+
 function addDataTable(jsonData) {
-    printData(jsonData);
     var x = jsonData.x;
     var y = jsonData.y;
     var r = jsonData.r;
@@ -233,8 +265,4 @@ function addDataTable(jsonData) {
     return;
 }
 
-function printData(jsonData) {
-    console.log("Пришел ответик!\n" + jsonData);
-    return;
-}
 
