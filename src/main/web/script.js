@@ -207,12 +207,12 @@ function makeForm() {
         },
         body: formData
     }).then(async response => response.json())
-        .then(data => console.log(data))
         .then(data => addDataTable(data))
         .catch(error => console.error('Fetch error:', error));
 }
 
 function addDataTable(jsonData) {
+    printData(jsonData);
     var x = jsonData.x;
     var y = jsonData.y;
     var r = jsonData.r;
@@ -230,5 +230,11 @@ function addDataTable(jsonData) {
     rCell.innerHTML = r;
     timeCell.innerHTML = time;
     hitCell.innerHTML = hitBol;
+    return;
+}
+
+function printData(jsonData) {
+    console.log("Пришел ответик!\n" + jsonData);
+    return;
 }
 
